@@ -23,7 +23,7 @@ class Fave extends Component {
      
     return (
       <div className={`film-row-fave ${classToggle}`} onClick={this.handleClick}>
-        <p className="material-icons">add_to_queue</p>
+        <p className="material-icons">{`${classToggle}`}</p>
       </div>
     )
   }
