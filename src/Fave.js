@@ -7,6 +7,7 @@ class Fave extends Component {
   }
   handleClick(e){
     console.log('handling the handle click')
+    e.stopPropagation(e)
   }
   render() {
     return (
