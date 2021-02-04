@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import FilmRow from './FilmRow'
 
-class FilmDetails extends Component {
+class FilmListing extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      displayAllFilms: this.props.films,
-      favFilms: [],
+      filter: 'all',
 
     }
     this.handleFilterClick = this.handleFilterClick.bind(this)
   }
   handleFilterClick(filter){
     console.log(`Setting Filter to ${filter}`)
+    this.setState({
+      filter: `${filter}`
+    })
   }
   render() {
     let allFilms=this.props.films.map((film, i) => {
@@ -39,4 +41,4 @@ class FilmDetails extends Component {
   }
 }
 
-export default FilmDetails;
+export default FilmListing;
