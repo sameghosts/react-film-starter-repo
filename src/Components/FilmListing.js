@@ -23,7 +23,13 @@ const FilmListing = (props) => {
   }
   let allFilms = props.films.map((film, i) => {
     return (
-      <FilmRow film={film} key={`film-row-${i}`} />
+      <FilmRow 
+        film={film} 
+        onFaveToggle={handleFaveToggle}
+        isFave={faves.includes(film)} 
+        handleDetailsClick={props.handleDetailsClick}
+        key={`film-row-${i}`} 
+      />
     )
   })
     return (
@@ -36,7 +42,7 @@ const FilmListing = (props) => {
           </div>
             <div className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`} onClick={()=> {handleFilterClick('faves')}}>
               FAVES
-              <span className="section-count">0</span>
+              <span className="section-count">{faves.length}</span>
             </div>
         </div>
         {allFilms}

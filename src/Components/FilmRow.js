@@ -3,11 +3,9 @@ import FilmPoster from './FilmPoster'
 import Fave from './Fave'
 
 const FilmRow = (props) => {
-  const handleDetailsClick =(film) =>{
-    console.log(`fetching details for ${film}`)
-  }
+  
   return (
-      <div className="film-row" onClick={() => handleDetailsClick(props.film.title)}>
+      <div className="film-row" onClick={() => props.handleDetailsClick(props.film)}>
         <FilmPoster 
         posterPath={props.film.poster_path} posterAlt={props.film.title} 
         />  
@@ -15,7 +13,7 @@ const FilmRow = (props) => {
           <h1>{props.film.title}</h1>
           <p>{props.film.release_date.substring(0,4)}</p>
         </div>
-        <Fave />
+        <Fave onFaveToggle={()=> {props.onFaveToggle(props.film)}} isFave={props.isFave}/>
       </div>
   )
 }
