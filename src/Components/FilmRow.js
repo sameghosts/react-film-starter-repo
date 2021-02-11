@@ -5,7 +5,7 @@ import Fave from './Fave'
 const FilmRow = (props) => {
   
   return (
-      <div className="film-row" onClick={() => props.handleDetailsClick(props.film)}>
+      <div className="film-row" onClick={() => {props.handleDetailsClick(props.film)}}>
         <FilmPoster 
         posterPath={props.film.poster_path} posterAlt={props.film.title} 
         />  
