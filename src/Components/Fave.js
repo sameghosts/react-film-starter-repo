@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-const Fave = () => {
-  const [isFave, setIsFave] = useState(false);
+const Fave = (props) => {
   const [icon, setIcon] = useState('add_to_queue');
 
   useEffect (()=>{
-    setIcon(isFave ? 'remove_from_queue' : 'add_to_queue');
-  }, [isFave]);
+    setIcon(props.isFave ? 'remove_from_queue' : 'add_to_queue');
+  }, [props.isFave]);
 
   const handleClick = (e) => {
-    console.log('handling the handle click')
-    let prevState = isFave;
-    setIsFave(!prevState);
     e.stopPropagation(e);
+    console.log('handling the fave click');
+    props.onFaveToggle()
   };
   
   return (

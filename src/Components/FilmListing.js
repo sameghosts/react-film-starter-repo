@@ -3,10 +3,23 @@ import FilmRow from './FilmRow'
 
 const FilmListing = (props) => {
   const [filter, setFilter] = useState ('all');
+  const [faves, setFaves] = useState ([]);
   
   const handleFilterClick =(filter) => {
     console.log(`Setting Filter to ${filter}`)
     setFilter(filter);
+  }
+  const handleFaveToggle = (film) => {
+    let newFaves = [...faves];
+    const filmIndex = newFaves.indexOf(film);
+    if (filmIndex >= 0) {
+      console.log(`Removing ${film.title} from faves...`)
+      newFaves.splice(filmIndex, 1);
+    } else {
+      console.log(`Adding ${film.title} to faves...`)
+      newFaves = [...newFaves, film];
+    }
+    setFaves(newFaves)
   }
   let allFilms = props.films.map((film, i) => {
     return (
